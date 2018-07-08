@@ -26,7 +26,9 @@ for (var i = 0; i < squares.length; i++) {
 }
 
 function changeColors(color){
+  //loop through all the squares
   for (var i = 0; i < squares.length; i++) {
+  //changes each color to match the given color
     squares[i].style.backgroundColor = color
   }
 }
@@ -37,11 +39,13 @@ function pickedColor(){
 }
 
 function generatedColors(num){
+  //make an array
   var arr = []
+  //repeat num times
     for (var i = 0; i < num; i++){
-
+  //get random color and push into array
     }
-
+  //return the array
   return arr;
 }
 
