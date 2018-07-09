@@ -29,20 +29,24 @@ body{
 }
 
 button{
-  background: #fafafa;
   border: none;
+  background: none;
   font-size: 1em;
   font-weight: 600;
   color: #544e4e;
   letter-spacing: 1px;
   text-transform: uppercase;
   height: 100%;
+  margin-right: 10px
+  transition: all .4s;
+  -webkit-transition: all .4s;
+  -moz-transition: all .4s;
 }
 
 .selected{
-  transition: background 3s;
   background: #544e4e;
   color: #fafafa;
+  padding: 0 5px;
 }
 
 #message{
@@ -65,5 +69,7 @@ button{
   padding-bottom: 30%;
   margin: 1.66%;
   float: left;
-  transition: background .75s;
+  transition: background .55s;
+  -webkit-transition: background .55s;
+  -moz-transition: background .55s;
 }
