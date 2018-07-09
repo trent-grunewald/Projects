@@ -1,4 +1,5 @@
-var colors = generatedColors(6);
+var numSquares = 6;
+var colors = generatedColors(numSquares);
 var squares = document.querySelectorAll(".square");
 var selectedColor = pickedColor();
 var rgb = document.getElementById("rgb");
@@ -66,7 +67,7 @@ function randomColor(){
 
 newGame.addEventListener("click", function(){
   //generate new colors
-  colors = generatedColors(6);
+  colors = generatedColors(numSquares);
   //pick a new Colors
   selectedColor = pickedColor();
   // update header
@@ -78,7 +79,9 @@ newGame.addEventListener("click", function(){
   //head color change
   }
   headColor.style.background = "#2b9dd6";
-  message = "";
+  message.textContent = "";
+  newGame.textContent = "New Colors";
+
 })
 
 easyBtn.addEventListener("click", function(){
@@ -86,22 +89,49 @@ easyBtn.addEventListener("click", function(){
   hardBtn.classList.remove("selected");
   //add selected to easy
   easyBtn.classList.add("selected");
+  //number of number of squares
+  numSquares = 3;
   //only generates 3 colors
-  colors = generatedColors(3);
+  colors = generatedColors(numSquares);
   //pick a new Colors
   selectedColor = pickedColor();
   // update header
   rgb.textContent = selectedColor;
   //change square Colors
-  for (var i = 0; i < squares.length - 3; i++) {
-  //add initial colors to squares
-  squares[i].style.backgroundColor = colors[i];
+  for (var i = 0; i < squares.length; i++) {
+    if(colors[i]){
+      //add initial colors to squares
+      squares[i].style.background = colors[i];
+      //remove bottom 3 squares that don't update.
+    }else{
+      squares[i].style.display = "none";
+    }
   //head color change
   }
   headColor.style.background = "#2b9dd6";
+  message.textContent = "";
+  newGame.textContent = "New Colors";
 })
 
 hardBtn.addEventListener("click", function(){
   hardBtn.classList.add("selected");
   easyBtn.classList.remove("selected");
+  //number of squares
+  numSquares = 6;
+  //generate new colors
+  colors = generatedColors(6);
+  //pick a new Colors
+  selectedColor = pickedColor();
+  // update header
+  rgb.textContent = selectedColor;
+  //change square Colors
+  for (var i = 0; i < squares.length; i++) {
+  //add initial colors to squares
+  squares[i].style.backgroundColor = colors[i];
+  squares[i].style.display = "block";
+  //head color change
+  }
+  headColor.style.background = "#2b9dd6";
+  message.textContent = "";
+  newGame.textContent = "New Colors";
 })
