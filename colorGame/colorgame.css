@@ -8,7 +8,7 @@ body{
   background: #544e4e;
 }
 
-.head{
+#header{
   background: #2b9dd6;
   color: #fafafa;
   text-align: center;
@@ -20,13 +20,13 @@ body{
 }
 
 .options{
-  height: 5vh;
+  height: 5.25vh;
   background: #fafafa;
   padding: .5vh;
   text-align: center;
 }
 
-#newColors{
+#newGame{
   padding: 10px;
   background: #fafafa;
   border: none;
@@ -35,7 +35,7 @@ body{
   font-weight: 600;
 }
 
-#newColors:hover{
+#newGame:hover{
   background: #2b9dd6;
   border: 2px solid white;
   color: #fafafa;
