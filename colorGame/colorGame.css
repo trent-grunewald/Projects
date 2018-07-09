@@ -29,7 +29,8 @@ body{
 }
 
 button{
-  border: none;
+  border:none;
+  outline: none;
   background: none;
   font-size: 1em;
   font-weight: 600;
@@ -41,6 +42,14 @@ button{
   transition: all .4s;
   -webkit-transition: all .4s;
   -moz-transition: all .4s;
+}
+
+button:hover{
+  color: #fafafa;
+  padding: 0 2px;
+  background: #2b9dd6;
+  border-radius: 1px;
+  transition: background .35s;
 }
 
 .selected{
