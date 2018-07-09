@@ -6,7 +6,8 @@ var rgb = document.getElementById("rgb");
 var message = document.getElementById("message");
 var newGame = document.getElementById("newGame");
 var headColor = document.getElementById("header");
-
+var easyBtn = document.getElementById("easy");
+var hardBtn = document.getElementById("hard");
 
 
 for (var i = 0; i < squares.length; i++) {
@@ -78,4 +79,29 @@ newGame.addEventListener("click", function(){
   }
   headColor.style.background = "#2b9dd6";
   message = "";
+})
+
+easyBtn.addEventListener("click", function(){
+  //remove selected from hard
+  hardBtn.classList.remove("selected");
+  //add selected to easy
+  easyBtn.classList.add("selected");
+  //only generates 3 colors
+  colors = generatedColors(3);
+  //pick a new Colors
+  selectedColor = pickedColor();
+  // update header
+  rgb.textContent = selectedColor;
+  //change square Colors
+  for (var i = 0; i < squares.length - 3; i++) {
+  //add initial colors to squares
+  squares[i].style.backgroundColor = colors[i];
+  //head color change
+  }
+  headColor.style.background = "#2b9dd6";
+})
+
+hardBtn.addEventListener("click", function(){
+  hardBtn.classList.add("selected");
+  easyBtn.classList.remove("selected");
 })
