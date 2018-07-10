@@ -1,4 +1,4 @@
-var numSquares = 6;
+var numSquares = 9;
 var colors = generatedColors(numSquares);
 var squares = document.querySelectorAll(".square");
 var selectedColor = pickedColor();
@@ -7,28 +7,68 @@ var rgb = document.getElementById("rgb");
 var message = document.getElementById("message");
 var newGame = document.getElementById("newGame");
 var headColor = document.getElementById("header");
-var easyBtn = document.getElementById("easy");
-var hardBtn = document.getElementById("hard");
+var modeButtons = document.querySelectorAll(".mode");
 
+function init(){
+  for (var i = 0; i < modeButtons.length; i++) {
+    modeButtons[i].addEventListener("click",function(){
+      modeButtons[0].classList.remove("selected");
+      modeButtons[1].classList.remove("selected");
+      modeButtons[2].classList.remove("selected");
+      this.classList.add("selected");
+      if (this.textContent === "Easy") {
+        numSquares = 3;
+      }else if (this.textContent === "Medium") {
+        numSquares = 6;
+      }else{
+        numSquares = 9;
+      }
+      reset();
+    });
+  }
 
-for (var i = 0; i < squares.length; i++) {
-  //add initial colors to squares
-  squares[i].style.backgroundColor = colors[i];
-
-  //add click listeners to squares
-  squares[i].addEventListener("click", function(){
-    var clickedColor = this.style.backgroundColor;
-    if (clickedColor === selectedColor) {
-      message.textContent = "That is correct!"
-      newGame.textContent = "Play Again?";
-      changeColors(clickedColor);
-      headColor.style.background = clickedColor;
-    }else{
-      this.style.backgroundColor = "#544e4e";
-      message.textContent = "DERP! No..."
-    }
-  });
+  for (var i = 0; i < squares.length; i++) {
+    //add click listeners to squares
+    squares[i].addEventListener("click", function(){
+      var clickedColor = this.style.backgroundColor;
+      if (clickedColor === selectedColor) {
+        message.textContent = "That is correct!"
+        newGame.textContent = "Play Again?";
+        changeColors(clickedColor);
+        headColor.style.background = clickedColor;
+      }else{
+        this.style.backgroundColor = "#544e4e";
+        message.textContent = "DERP! No..."
+      }
+    });
+  }
+  reset();
 }
+
+function reset(){
+  //new colors generated
+  colors = generatedColors(numSquares);
+  //pick a new Colors
+  selectedColor = pickedColor();
+  // update header
+  rgb.textContent = selectedColor;
+  //change square Colors
+  for (var i = 0; i < squares.length; i++) {
+    if(colors[i]){
+      squares[i].style.display = "block";
+      squares[i].style.background = colors[i];
+    }else{
+      squares[i].style.display = "none";
+    }
+  //add initial colors to squares
+  //head color change
+  }
+  headColor.style.background = "#2b9dd6";
+  message.textContent = "";
+  newGame.textContent = "New Colors";
+}
+
+
 
 function changeColors(color){
   //loop through all the squares
@@ -66,72 +106,5 @@ function randomColor(){
 }
 
 newGame.addEventListener("click", function(){
-  //generate new colors
-  colors = generatedColors(numSquares);
-  //pick a new Colors
-  selectedColor = pickedColor();
-  // update header
-  rgb.textContent = selectedColor;
-  //change square Colors
-  for (var i = 0; i < squares.length; i++) {
-  //add initial colors to squares
-  squares[i].style.backgroundColor = colors[i];
-  //head color change
-  }
-  headColor.style.background = "#2b9dd6";
-  message.textContent = "";
-  newGame.textContent = "New Colors";
-
-})
-
-easyBtn.addEventListener("click", function(){
-  //remove selected from hard
-  hardBtn.classList.remove("selected");
-  //add selected to easy
-  easyBtn.classList.add("selected");
-  //number of number of squares
-  numSquares = 3;
-  //only generates 3 colors
-  colors = generatedColors(numSquares);
-  //pick a new Colors
-  selectedColor = pickedColor();
-  // update header
-  rgb.textContent = selectedColor;
-  //change square Colors
-  for (var i = 0; i < squares.length; i++) {
-    if(colors[i]){
-      //add initial colors to squares
-      squares[i].style.background = colors[i];
-      //remove bottom 3 squares that don't update.
-    }else{
-      squares[i].style.display = "none";
-    }
-  //head color change
-  }
-  headColor.style.background = "#2b9dd6";
-  message.textContent = "";
-  newGame.textContent = "New Colors";
-})
-
-hardBtn.addEventListener("click", function(){
-  hardBtn.classList.add("selected");
-  easyBtn.classList.remove("selected");
-  //number of squares
-  numSquares = 6;
-  //generate new colors
-  colors = generatedColors(6);
-  //pick a new Colors
-  selectedColor = pickedColor();
-  // update header
-  rgb.textContent = selectedColor;
-  //change square Colors
-  for (var i = 0; i < squares.length; i++) {
-  //add initial colors to squares
-  squares[i].style.backgroundColor = colors[i];
-  squares[i].style.display = "block";
-  //head color change
-  }
-  headColor.style.background = "#2b9dd6";
-  message.textContent = "";
-  newGame.textContent = "New Colors";
+  reset();
 })
