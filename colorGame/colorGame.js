@@ -1,7 +1,7 @@
 var numSquares = 9;
-var colors = generatedColors(numSquares);
+var colors = [];
+var selectedColor;
 var squares = document.querySelectorAll(".square");
-var selectedColor = pickedColor();
 var rgb = document.getElementById("rgb");
     rgb.textContent = selectedColor;
 var message = document.getElementById("message");
@@ -9,7 +9,33 @@ var newGame = document.getElementById("newGame");
 var headColor = document.getElementById("header");
 var modeButtons = document.querySelectorAll(".mode");
 
+init();
+
 function init(){
+  setupModeButtons();
+  setupSquares();
+  reset()
+}
+
+function setupSquares(){
+  for (var i = 0; i < squares.length; i++) {
+    //add click listeners to squares
+    squares[i].addEventListener("click", function(){
+      var clickedColor = this.style.backgroundColor;
+      if (clickedColor === selectedColor) {
+        message.textContent = "That is correct!"
+        newGame.textContent = "Play Again?";
+        changeColors(clickedColor);
+        headColor.style.background = clickedColor;
+      }else{
+        this.style.backgroundColor = "#544e4e";
+        message.textContent = "DERP! No..."
+      }
+    });
+  }
+}
+
+function setupModeButtons(){
   for (var i = 0; i < modeButtons.length; i++) {
     modeButtons[i].addEventListener("click",function(){
       modeButtons[0].classList.remove("selected");
@@ -26,23 +52,6 @@ function init(){
       reset();
     });
   }
-
-  for (var i = 0; i < squares.length; i++) {
-    //add click listeners to squares
-    squares[i].addEventListener("click", function(){
-      var clickedColor = this.style.backgroundColor;
-      if (clickedColor === selectedColor) {
-        message.textContent = "That is correct!"
-        newGame.textContent = "Play Again?";
-        changeColors(clickedColor);
-        headColor.style.background = clickedColor;
-      }else{
-        this.style.backgroundColor = "#544e4e";
-        message.textContent = "DERP! No..."
-      }
-    });
-  }
-  reset();
 }
 
 function reset(){
@@ -67,8 +76,6 @@ function reset(){
   message.textContent = "";
   newGame.textContent = "New Colors";
 }
-
-
 
 function changeColors(color){
   //loop through all the squares
