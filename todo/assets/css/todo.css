@@ -47,17 +47,11 @@ li:nth-child(odd){
 .material-icons{
   vertical-align: sub;
   color: #bb1414;
-
-}
-
-span{
   -webkit-transition: margin .25s; /* Safari */
   transition: margin .55s;
-  visibility: hidden;
 }
 
-span:hover{
-  visibility: visible;
+.material-icons:hover{
   margin: 0 20px;
 }
 
@@ -72,6 +66,7 @@ span:hover{
     background: white;
     border-radius: 20px;
     height: 23px;
+    /* text-align: center; */
     position: flex;
     display: grid;
     place-items: center;
