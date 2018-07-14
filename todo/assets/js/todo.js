@@ -4,6 +4,9 @@ $( "li" ).on("click", function(){
 });
 
 //delete //
-$( ".delete" ).on("click", function(){
-  $( this ).slideUp( );
+$( ".delete" ).on("click", function(event){
+  $( this ).parent().fadeOut(700, function(){
+    $(this).remove();
+  });
+  event.stopPropagation();
 })
