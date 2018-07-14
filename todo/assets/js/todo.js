@@ -18,6 +18,6 @@ $( ".addTodo" ).keypress(function(event){
     var todoText = $( this ).val();
     $( this ).val( "" );
     //create a new li and add to ul
-    $( ".todoList" ).append( "<li><span>x</span>" +  todoText + "</li>" )
+    $( ".todoList" ).append( "<li><span><i class='material-icons'>delete_forever</i></span>" +  todoText + "</li>" )
   }
 });
