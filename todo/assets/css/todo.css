@@ -59,15 +59,3 @@ li:nth-child(odd){
   color: gray;
   text-decoration: line-through;
 }
-
-.fa, .fas {
-    font-weight: 900;
-    width: 23px;
-    background: white;
-    border-radius: 20px;
-    height: 23px;
-    /* text-align: center; */
-    position: flex;
-    display: grid;
-    place-items: center;
-}
