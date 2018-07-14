@@ -41,27 +41,28 @@ ul{
 }
 
 li{
-  line-height: 35px;
+  line-height: 40px;
   vertical-align: sub;
 }
 li:nth-child(odd){
   background: #278d9354;
 }
 
-.material-icons{
-  vertical-align: sub;
-  color: transparent;
-  -webkit-transition: color .55s; /* Safari */
-  transition: color .55s;
-  -webkit-transition: margin .55s; /* Safari */
-  transition: margin .55s;
-  margin: 10px
+span{
+  height: 40px;
+  width: 0;
+  margin-right: 20px;
+  vertical-align: -webkit-baseline-middle;
+  text-align: center;
+  color: #bb1414;
+  display: inline-block;
+  visibility: collapse;
+  transition: .2s linear;
 }
 
-.material-icons:hover{
-  margin: 0 20px;
-  color: #bb1414;
-  margin: 20px;
+li:hover span{
+  width: 40px;
+  visibility: visible;
 }
 
 .completed{
