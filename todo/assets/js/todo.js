@@ -13,7 +13,7 @@ $( "ul" ).on("click", "span", function(event){
 
 //add todo
 $( ".addTodo" ).keypress(function(event){
-  if( event.which === 13 ){
+  if($(this).val()!="" && event.which === 13){
     //grabs todo text from input
     var todoText = $( this ).val();
     $( this ).val( "" );
